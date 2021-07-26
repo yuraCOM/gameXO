@@ -46,26 +46,26 @@ function gameUser() {
 function check() {
     let scoreWin = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
     let userEvent = document.querySelectorAll('#field')
-    let result
-        if (hod === 9){
-            result = 'НИЧЬЯ'
-            viewResult(result)
-        }
-        for (i=0; i<scoreWin.length; i++){
+    let result = ''
+
+    for (i=0; i<scoreWin.length; i++){
+        console.log(result,'i= ',i, 'hod = ',hod)
+
         if ( userEvent[scoreWin[i][0]].innerHTML === 'x' && userEvent[scoreWin[i][1]].innerHTML === 'x' && userEvent[scoreWin[i][2]].innerHTML === 'x'
         ){
             result = 'Победили Крестики'
             viewResult(result)
         }
-        else if ( userEvent[scoreWin[i][0]].innerHTML === 'o' && userEvent[scoreWin[i][1]].innerHTML === 'o' && userEvent[scoreWin[i][2]].innerHTML === 'o'
+         if ( userEvent[scoreWin[i][0]].innerHTML === 'o' && userEvent[scoreWin[i][1]].innerHTML === 'o' && userEvent[scoreWin[i][2]].innerHTML === 'o'
         ){
             result = 'Победили Нолики'
             viewResult(result)
         }
-
+        if(result === '' && hod ===9 && i ===7){
+            result = 'Ничья'
+            viewResult(result)
+        }
     }
-
-
 };
 // показываем результат
 function viewResult(result) {
