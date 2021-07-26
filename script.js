@@ -1,5 +1,4 @@
 let gameWindow = document.querySelector('#game')
-
 document.querySelector('#new-game').onclick = ()=>{
     location.reload() //перезагрузка страницы
 }
@@ -17,24 +16,28 @@ function maidFields() {
 };
 
 //game user - юзер нажимает
+let hod = 0
 function gameUser() {
-    let hod = 0
     gameWindow.onclick = (event) =>{
         // console.log(event)
+
         if( event.target.innerText){
             // console.log('занято')
             return false
         } else {
             if (hod %2 ===0){
                 event.target.innerText = 'x'
-                check()
+                // check()
             }
             else {
                 event.target.innerText = 'o'
-                check()
+                // check()
                 // console.log(event.target.innerText)
             }
             hod++
+            console.log(hod)
+            check()
+
         }
     }
 };
@@ -44,17 +47,22 @@ function check() {
     let scoreWin = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
     let userEvent = document.querySelectorAll('#field')
     let result
+        if (hod === 9){
+            result = 'НИЧЬЯ'
+            viewResult(result)
+        }
         for (i=0; i<scoreWin.length; i++){
         if ( userEvent[scoreWin[i][0]].innerHTML === 'x' && userEvent[scoreWin[i][1]].innerHTML === 'x' && userEvent[scoreWin[i][2]].innerHTML === 'x'
         ){
-            result = 'Крестики'
+            result = 'Победили Крестики'
             viewResult(result)
         }
         else if ( userEvent[scoreWin[i][0]].innerHTML === 'o' && userEvent[scoreWin[i][1]].innerHTML === 'o' && userEvent[scoreWin[i][2]].innerHTML === 'o'
         ){
-            result = 'Нолики'
+            result = 'Победили Нолики'
             viewResult(result)
         }
+
     }
 
 
@@ -67,4 +75,5 @@ function viewResult(result) {
     gameWindow.style.pointerEvents = 'none';
     resultWinner.innerHTML += `${result}!!!`
     resultWrapper.style.display = 'block'
+
 }
