@@ -2,6 +2,15 @@ body{
     user-select: none;
     background-color: darkcyan;
 }
+#game-title{
+
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+    color: yellowgreen;
+    font-weight: bold;
+
+}
 #game{
 
     width: 300px;
@@ -29,4 +38,7 @@ body{
 #result{
     font-size: 30px;
     color: darkred;
+}
+#new-game{
+    font-size: 25px;
 }
